@@ -6,10 +6,11 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, ToolbarComponent, LoginComponent, HomeComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpModule],
+  imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -13,18 +13,20 @@
               <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
                 <input
-                  type="email"
+                  type="text"
+                  [(ngModel)]="service.userName"
                   name="email"
                   class="form-control"
                   id="email"
                   aria-describedby="emailHelp"
-                  placeholder="Enter email"
+                  placeholder="User"
                 />
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Password</label>
                 <input
                   type="password"
+                  [(ngModel)]="service.password"
                   name="password"
                   id="password"
                   class="form-control"

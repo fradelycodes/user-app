@@ -71,3 +71,9 @@ form .error {
 #second {
   display: none;
 }
+
+.label-warning {
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+}

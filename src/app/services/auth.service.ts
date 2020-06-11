@@ -6,16 +6,19 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  apiUser = '/users';
+ 
   listUsers = [];
   userName = '';
   password = '';
   user = {};
   isValidUser = false;
   isValidPass = false;
+  isValidateUser = false;
+  isLogout = false;
+
   constructor(private router: Router) {}
 
-  async getUsers() {
+  getUsers() {
     this.listUsers = [
       {
         name: 'Fradely Ventura',
@@ -33,20 +36,8 @@ export class AuthService {
         avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/SULiik/128.jpg',
       },
     ];
-
-    // try {
-
-    //   await this.http
-    //     .get(environment.baseUrl + this.apiUser)
-    //     .subscribe((response) => {
-    //       this.listUsers = response.json();
-    //       this.login();
-    //     });
-    // } catch (err) {
-    //   console.log(err);
-    // }
   }
-  //method
+
   login() {
     if (this.userName == '' && this.password == '') {
       this.isValidPass = true;
@@ -54,26 +45,42 @@ export class AuthService {
       return;
     }
     var user = this.listUsers.find(
-      (u) => u.userName == this.userName && u.password === this.password
+      (u) => u.userName == this.userName && u.password == this.password
     );
-
-    if (user) {
+    //aqui estamos verificando si el password y el username son correctos
+    console.log(user);
+    if (!user) {
+      this.isValidateUser = true;
       return;
     }
-    localStorage.setItem('currentUser', user);
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    //esta linea se almacena el usuario entonctrado
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    //aqui se obtiene el usuario
+    var currentUser = JSON.parse(
+      JSON.stringify(localStorage.getItem('currentUser').toString())
+    );
     console.log(currentUser);
+    this.isLogout = true;
     this.router.navigate(['/home']);
   }
 
   validateUser() {
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(currentUser);
-
+    var currentUser = JSON.parse(
+      JSON.stringify(localStorage.getItem('currentUser').toString())
+    );
     if (currentUser) {
+      this.isLogout = true;
       this.router.navigate(['/home']);
     } else {
       this.router.navigate(['/']);
     }
+  }
+  logout() {
+    //aqui vamos a destruir el objecto almacenado
+    this.isLogout = false;
+    localStorage.removeItem('currentUser');
+    //aqui vamos a ir de nuevo a nuestro login
+    this.router.navigate(['/']);
   }
 }

@@ -36,7 +36,8 @@
                   aria-describedby="emailHelp"
                   placeholder="Enter Password"
                 />
-                <label class="label-warning" *ngIf="service.isValidPass"  >Please enter your password</label
+                <label class="label-warning" *ngIf="service.isValidPass"
+                  >Please enter your password</label
                 >
               </div>
 
@@ -48,6 +49,9 @@
                 >
                   Login
                 </button>
+                <label class="label-warning" *ngIf="service.isValidateUser"
+                  >El usuario esta incorrecto</label
+                >
               </div>
             </form>
           </div>

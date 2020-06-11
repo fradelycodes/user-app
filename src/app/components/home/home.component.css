@@ -1,0 +1,11 @@
+.container {
+  margin-top: 20px;
+}
+
+ul > li {
+  display: inline-block;
+  margin-left: 10px;
+
+  zoom: 1;
+  *display: inline;
+}

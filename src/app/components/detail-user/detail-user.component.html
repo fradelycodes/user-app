@@ -1,0 +1,35 @@
+<p>update-user works!</p>
+<div>
+  <div class="card" style="width: 18rem;">
+    <img src="{{ user.avatar }}" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="user.name"
+        placeholder="Your Password *"
+        value=""
+      />
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="user.roles"
+        placeholder="Your Password *"
+        value=""
+      />
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="user.password"
+        placeholder="Your Password *"
+        value=""
+      />
+      <button class="btn btn-default btn-sm" (click)="onBack()">
+        Atras
+      </button>
+      <button (click)="updated()" class="btn btn-danger btn-sm pull-right">
+        Update User
+      </button>
+    </div>
+  </div>
+</div>
